@@ -24,3 +24,6 @@ class Hemsire(Personel):
         def maas_arttir(self, oran):
             self.set_maas(self.get_maas() * (1 + oran / 100))
 
+        def __str__(self):
+            return super().__str__() + f", Çalışma Saati: {self.__calisma_saati}, Sertifika: {self.__sertifika}, Hastane: {self.__hastane}"
+
