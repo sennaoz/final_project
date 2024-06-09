@@ -21,5 +21,10 @@ class Hasta:
             return self.__soyad
         def set_soyad(self, soyad):
             self.__soyad = soyad
+        
+        def get_dogum_tarihi(self):
+            return self.__dogum_tarihi
+        def set_dogum_tarihi(self, dogum_tarihi):
+            self.__dogum_tarihi = dogum_tarihi
 
     
