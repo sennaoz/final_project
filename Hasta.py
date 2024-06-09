@@ -31,6 +31,9 @@ class Hasta:
             return self.__hastalik
         def set_hastalik(self, hastalik):
             self.__hastalik = hastalik
-            
 
+        def get_tedavi(self):
+            return self.__tedavi
+        def set_tedavi(self, tedavi):
+            self.__tedavi = tedavi
     
