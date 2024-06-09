@@ -26,5 +26,11 @@ class Hasta:
             return self.__dogum_tarihi
         def set_dogum_tarihi(self, dogum_tarihi):
             self.__dogum_tarihi = dogum_tarihi
+        
+        def get_hastalik(self):
+            return self.__hastalik
+        def set_hastalik(self, hastalik):
+            self.__hastalik = hastalik
+            
 
     
