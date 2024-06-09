@@ -10,3 +10,8 @@ class Hemsire(Personel):
             return self.__calisma_saati
         def set_calisma_saati(self, calisma_saati):
             self.__calisma_saati = calisma_saati
+            
+        def get_sertifika(self):
+            return self.__sertifika
+        def set_sertifika(self, sertifika):
+            self.__sertifika = sertifika
