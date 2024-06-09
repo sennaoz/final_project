@@ -6,3 +6,5 @@ class Personel:
         self.__departman = departman
         self.__maas = maas
 #class personel oluşturuldu
+        def get_personel_no(self):
+            return self.__personel_no
