@@ -39,4 +39,8 @@ class Hasta:
 
         def tedavi_suresi_hesapla(self):
             return len(self.__tedavi) * 2  
+        
+        def __str__(self):
+            return f"Hasta No: {self.__hasta_no}, Ad: {self.__ad}, Soyad: {self.__soyad}, Doğum Tarihi: {self.__dogum_tarihi}, Hastalık: {self.__hastalik}, Tedavi: {self.__tedavi}"
+
     
