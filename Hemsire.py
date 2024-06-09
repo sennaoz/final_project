@@ -15,3 +15,8 @@ class Hemsire(Personel):
             return self.__sertifika
         def set_sertifika(self, sertifika):
             self.__sertifika = sertifika
+        
+        def get_hastane(self):
+            return self.__hastane
+        def set_hastane(self, hastane):
+            self.__hastane = hastane
