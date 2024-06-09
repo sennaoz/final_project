@@ -11,5 +11,10 @@ class Hasta:
             return self.__hasta_no
         def set_hasta_no(self, hasta_no):
             self.__hasta_no = hasta_no
+        
+        def get_ad(self):
+            return self.__ad
+        def set_ad(self, ad):
+            self.__ad = ad
 
     
