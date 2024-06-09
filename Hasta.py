@@ -6,5 +6,10 @@ class Hasta:
         self.__dogum_tarihi = dogum_tarihi
         self.__hastalik = hastalik
         self.__tedavi = tedavi
-        
+
+        def get_hasta_no(self):
+            return self.__hasta_no
+        def set_hasta_no(self, hasta_no):
+            self.__hasta_no = hasta_no
+
     
