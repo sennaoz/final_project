@@ -20,3 +20,7 @@ class Hemsire(Personel):
             return self.__hastane
         def set_hastane(self, hastane):
             self.__hastane = hastane
+
+        def maas_arttir(self, oran):
+            self.set_maas(self.get_maas() * (1 + oran / 100))
+
