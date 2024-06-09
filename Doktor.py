@@ -15,3 +15,8 @@ class Doktor(Personel):
             return self.__deneyim_yili
         def set_deneyim_yili(self, deneyim_yili):
             self.__deneyim_yili = deneyim_yili
+
+        def get_hastane(self):
+            return self.__hastane
+        def set_hastane(self, hastane):
+            self.__hastane = hastane
