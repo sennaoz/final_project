@@ -6,6 +6,7 @@ class Personel:
         self.__departman = departman
         self.__maas = maas
 #class personel oluşturuldu
+
         def get_personel_no(self):
             return self.__personel_no
         def set_personel_no(self, personel_no):
@@ -15,3 +16,8 @@ class Personel:
             return self.__ad
         def set_ad(self, ad):
             self.__ad = ad
+        
+        def get_soyad(self):
+            return self.__soyad
+        def set_soyad(self, soyad):
+            self.__soyad = soyad
