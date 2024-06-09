@@ -17,4 +17,9 @@ class Hasta:
         def set_ad(self, ad):
             self.__ad = ad
 
+        def get_soyad(self):
+            return self.__soyad
+        def set_soyad(self, soyad):
+            self.__soyad = soyad
+
     
