@@ -10,4 +10,8 @@ class Personel:
             return self.__personel_no
         def set_personel_no(self, personel_no):
             self.__personel_no = personel_no
-            
+
+        def get_ad(self):
+            return self.__ad
+        def set_ad(self, ad):
+            self.__ad = ad
