@@ -20,7 +20,10 @@ class Doktor(Personel):
             return self.__hastane
         def set_hastane(self, hastane):
             self.__hastane = hastane
-            
+
         #maaş arttırma
         def maas_arttir(self, oran):
             self.set_maas(self.get_maas() * (1 + oran / 100))
+
+        def __str__(self):
+            return super().__str__() + f", Uzmanlik: {self.__uzmanlik}, Deneyim Yılı: {self.__deneyim_yili}, Hastane: {self.__hastane}"
