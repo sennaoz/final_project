@@ -36,4 +36,7 @@ class Hasta:
             return self.__tedavi
         def set_tedavi(self, tedavi):
             self.__tedavi = tedavi
+
+        def tedavi_suresi_hesapla(self):
+            return len(self.__tedavi) * 2  
     
