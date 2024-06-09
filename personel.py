@@ -21,8 +21,13 @@ class Personel:
             return self.__soyad
         def set_soyad(self, soyad):
             self.__soyad = soyad
-            
+
         def get_departman(self):
             return self.__departman
         def set_departman(self, departman):
             self.__departman = departman
+        
+        def get_maas(self):
+            return self.__maas
+        def set_maas(self, maas):
+            self.__maas = maas
