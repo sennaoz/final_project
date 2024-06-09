@@ -8,3 +8,5 @@ class Personel:
 #class personel oluşturuldu
         def get_personel_no(self):
             return self.__personel_no
+        def set_personel_no(self, personel_no):
+            self.__personel_no = personel_no
