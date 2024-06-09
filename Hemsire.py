@@ -5,3 +5,8 @@ class Hemsire(Personel):
         self.__calisma_saati = calisma_saati
         self.__sertifika = sertifika
         self.__hastane = hastane
+
+        def get_calisma_saati(self):
+            return self.__calisma_saati
+        def set_calisma_saati(self, calisma_saati):
+            self.__calisma_saati = calisma_saati
