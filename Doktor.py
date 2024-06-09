@@ -27,3 +27,4 @@ class Doktor(Personel):
 
         def __str__(self):
             return super().__str__() + f", Uzmanlik: {self.__uzmanlik}, Deneyim Yılı: {self.__deneyim_yili}, Hastane: {self.__hastane}"
+        
