@@ -10,3 +10,8 @@ class Doktor(Personel):
             return self.__uzmanlik
         def set_uzmanlik(self, uzmanlik):
             self.__uzmanlik = uzmanlik
+
+        def get_deneyim_yili(self):
+            return self.__deneyim_yili
+        def set_deneyim_yili(self, deneyim_yili):
+            self.__deneyim_yili = deneyim_yili
