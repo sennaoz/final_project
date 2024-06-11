@@ -37,3 +37,41 @@ def hasta_bilgileri_iste():
     hastalik = input("Hastalık: ")
     tedavi = input("Tedavi: ")
     return hasta_no, ad, soyad, dogum_tarihi, hastalik, tedavi
+
+
+def main():
+    try:
+        # Personel nesneleri oluşturma
+        print("Personel Bilgilerini Gir")
+        personel1 = Personel(*personel_bilgileri_iste())
+        print("Personel Bilgilerini Gir")
+        personel2 = Personel(*personel_bilgileri_iste())
+
+        # Doktor nesneleri oluşturma
+        doktor1 = Doktor(*doktor_bilgileri_iste())
+        doktor2 = Doktor(*doktor_bilgileri_iste())
+        doktor3 = Doktor(*doktor_bilgileri_iste())
+
+        # Hemşire nesneleri oluşturma
+        hemsire1 = Hemsire(*hemsire_bilgileri_iste())
+        hemsire2 = Hemsire(*hemsire_bilgileri_iste())
+        hemsire3 = Hemsire(*hemsire_bilgileri_iste())
+
+        # Hasta nesneleri oluşturma
+        hasta1 = Hasta(*hasta_bilgileri_iste())
+        hasta2 = Hasta(*hasta_bilgileri_iste())
+        hasta3 = Hasta(*hasta_bilgileri_iste())
+
+        # Nesneleri listeye ekleme
+        personeller = [personel1, personel2, doktor1, doktor2, doktor3, hemsire1, hemsire2, hemsire3]
+        hastalar = [hasta1, hasta2, hasta3]
+
+        # Personel bilgilerini yazdırma
+        print("\nPersonel Bilgileri:")
+        for personel in personeller:
+            print(personel)
+
+        # Hasta bilgilerini yazdırma
+        print("\nHasta Bilgileri:")
+        for hasta in hastalar:
+            print(hasta)
