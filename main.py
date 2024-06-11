@@ -47,6 +47,7 @@ def main():
         print("Personel Bilgilerini Gir")
         personel2 = Personel(*personel_bilgileri_iste())
 
+
         # Doktor nesneleri oluşturma
         doktor1 = Doktor(*doktor_bilgileri_iste())
         doktor2 = Doktor(*doktor_bilgileri_iste())
