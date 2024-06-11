@@ -11,3 +11,11 @@ def personel_bilgileri_iste():
     departman = input("Departman: ")
     maas = float(input("Maaş: "))
     return personel_no, ad, soyad, departman, maas
+
+def doktor_bilgileri_iste():
+    print("Doktor Bilgilerini Gir")
+    personel_no, ad, soyad, departman, maas = personel_bilgileri_iste()
+    uzmanlik = input("Uzmanlık: ")
+    deneyim_yili = int(input("Deneyim Yılı: "))
+    hastane = input("Hastane: ")
+    return personel_no, ad, soyad, departman, maas, uzmanlik, deneyim_yili, hastane
