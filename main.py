@@ -1,11 +1,11 @@
-import pandas as pd
-from Personel import Personel
-from Doktor import Doktor
-from Hemsire import Hemsire
-from Hasta import Hasta
-
+import pandas as pd  # Pandas kütüphanesini içe aktarır
+from Personel import Personel  # Personel sınıfını içe aktarır
+from Doktor import Doktor  # Doktor sınıfını içe aktarır
+from Hemsire import Hemsire  # Hemsire sınıfını içe aktarır
+from Hasta import Hasta  # Hasta sınıfını içe aktarır
 
 def personel_bilgileri_iste():
+    # Personel bilgilerini kullanıcıdan alır
     personel_no = input("No: ")
     ad = input("Ad: ")
     soyad = input("Soyad: ")
@@ -13,8 +13,8 @@ def personel_bilgileri_iste():
     maas = float(input("Maaş: "))
     return personel_no, ad, soyad, departman, maas
 
-
 def doktor_bilgileri_iste():
+    # Doktor bilgilerini kullanıcıdan alır
     print("Doktor Bilgilerini Gir")
     personel_no, ad, soyad, departman, maas = personel_bilgileri_iste()
     uzmanlik = input("Uzmanlık: ")
@@ -22,8 +22,8 @@ def doktor_bilgileri_iste():
     hastane = input("Hastane: ")
     return personel_no, ad, soyad, departman, maas, uzmanlik, deneyim_yili, hastane
 
-
 def hemsire_bilgileri_iste():
+    # Hemşire bilgilerini kullanıcıdan alır
     print("Hemşire Bilgilerini Gir")
     personel_no, ad, soyad, departman, maas = personel_bilgileri_iste()
     calisma_saati = int(input("Çalışma Saati: "))
@@ -31,8 +31,8 @@ def hemsire_bilgileri_iste():
     hastane = input("Hastane: ")
     return personel_no, ad, soyad, departman, maas, calisma_saati, sertifika, hastane
 
-
 def hasta_bilgileri_iste():
+    # Hasta bilgilerini kullanıcıdan alır
     print("Hasta Bilgilerini Gir")
     hasta_no = input("Hasta No: ")
     ad = input("Ad: ")
@@ -41,7 +41,6 @@ def hasta_bilgileri_iste():
     hastalik = input("Hastalık: ")
     tedavi = input("Tedavi: ")
     return hasta_no, ad, soyad, dogum_tarihi, hastalik, tedavi
-
 
 def main():
     try:
@@ -81,39 +80,42 @@ def main():
             print(hasta)
 
         # Pandas DataFrame oluşturma
-        data = []
+        data = []  # Boş bir liste oluşturur
         for personel in personeller:
+            # Personel bilgilerini listeye ekler
             data.append([
                 personel.get_personel_no(),
                 personel.get_ad(),
                 personel.get_soyad(),
                 personel.get_departman(),
                 personel.get_maas(),
-                getattr(personel, 'get_uzmanlik', lambda: 0)(),
-                getattr(personel, 'get_deneyim_yili', lambda: 0)(),
-                getattr(personel, 'get_hastane', lambda: 0)(),
-                getattr(personel, 'get_calisma_saati', lambda: 0)(),
-                getattr(personel, 'get_sertifika', lambda: 0)(),
+                getattr(personel, 'get_uzmanlik', lambda: 0)(),  # Uzmanlık bilgisi
+                getattr(personel, 'get_deneyim_yili', lambda: 0)(),  # Deneyim yılı
+                getattr(personel, 'get_hastane', lambda: 0)(),  # Hastane bilgisi
+                getattr(personel, 'get_calisma_saati', lambda: 0)(),  # Çalışma saati
+                getattr(personel, 'get_sertifika', lambda: 0)(),  # Sertifika bilgisi
                 0, 0, 0  # Hasta sütunları için boş değerler
             ])
 
         for hasta in hastalar:
+            # Hasta bilgilerini listeye ekler
             data.append([
                 hasta.get_hasta_no(),
                 hasta.get_ad(),
                 hasta.get_soyad(),
                 0, 0, 0, 0, 0, 0, 0,
-                hasta.get_dogum_tarihi(),
-                hasta.get_hastalik(),
-                hasta.get_tedavi()
+                hasta.get_dogum_tarihi(),  # Doğum tarihi
+                hasta.get_hastalik(),  # Hastalık bilgisi
+                hasta.get_tedavi()  # Tedavi bilgisi
             ])
 
+        # DataFrame oluşturur
         df = pd.DataFrame(data, columns=[
             "No", "Ad", "Soyad", "Departman", "Maas", "Uzmanlik", "Deneyim Yili", "Hastane",
             "Calisma Saati", "Sertifika", "Dogum Tarihi", "Hastalik", "Tedavi"
         ])
 
-        df.fillna(0, inplace=True)
+        df.fillna(0, inplace=True)  # Eksik verileri 0 ile doldurur
 
         # Maaşı 7000 TL üzerinde olan personeller
         print("\nMaaşı 7000 TL üzerinde olan personeller:")
@@ -140,8 +142,8 @@ def main():
         print("\nYeni DataFrame:")
         print(yeni_df)
     except Exception as e:
+        # Hata durumunda hata mesajını yazdırır
         print(f"Bir hata oluştu: {e}")
 
-
 if __name__ == "__main__":
-    main()
+    main()  # Ana fonksiyonu çalıştırır
