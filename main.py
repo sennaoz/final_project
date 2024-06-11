@@ -4,6 +4,7 @@ from Doktor import Doktor
 from Hemsire import Hemsire
 from Hasta import Hasta
 
+
 def personel_bilgileri_iste():
     personel_no = input("No: ")
     ad = input("Ad: ")
@@ -11,6 +12,7 @@ def personel_bilgileri_iste():
     departman = input("Departman: ")
     maas = float(input("Maaş: "))
     return personel_no, ad, soyad, departman, maas
+
 
 def doktor_bilgileri_iste():
     print("Doktor Bilgilerini Gir")
@@ -20,6 +22,7 @@ def doktor_bilgileri_iste():
     hastane = input("Hastane: ")
     return personel_no, ad, soyad, departman, maas, uzmanlik, deneyim_yili, hastane
 
+
 def hemsire_bilgileri_iste():
     print("Hemşire Bilgilerini Gir")
     personel_no, ad, soyad, departman, maas = personel_bilgileri_iste()
@@ -27,6 +30,7 @@ def hemsire_bilgileri_iste():
     sertifika = input("Sertifika: ")
     hastane = input("Hastane: ")
     return personel_no, ad, soyad, departman, maas, calisma_saati, sertifika, hastane
+
 
 def hasta_bilgileri_iste():
     print("Hasta Bilgilerini Gir")
@@ -46,7 +50,6 @@ def main():
         personel1 = Personel(*personel_bilgileri_iste())
         print("Personel Bilgilerini Gir")
         personel2 = Personel(*personel_bilgileri_iste())
-
 
         # Doktor nesneleri oluşturma
         doktor1 = Doktor(*doktor_bilgileri_iste())
@@ -76,28 +79,46 @@ def main():
         print("\nHasta Bilgileri:")
         for hasta in hastalar:
             print(hasta)
-        
+
         # Pandas DataFrame oluşturma
         data = []
         for personel in personeller:
-            data.append([personel.get_personel_no(), personel.get_ad(), personel.get_soyad(), personel.get_departman(),
-                         personel.get_maas(),
-                         getattr(personel, 'get_uzmanlik', lambda: 0)(),
-                         getattr(personel, 'get_deneyim_yili', lambda: 0)(),
-                         getattr(personel, 'get_hastane', lambda: 0)(),
-                         getattr(personel, 'get_calisma_saati', lambda: 0)(),
-                         getattr(personel, 'get_sertifika', lambda: 0)()])
+            data.append([
+                personel.get_personel_no(),
+                personel.get_ad(),
+                personel.get_soyad(),
+                personel.get_departman(),
+                personel.get_maas(),
+                getattr(personel, 'get_uzmanlik', lambda: 0)(),
+                getattr(personel, 'get_deneyim_yili', lambda: 0)(),
+                getattr(personel, 'get_hastane', lambda: 0)(),
+                getattr(personel, 'get_calisma_saati', lambda: 0)(),
+                getattr(personel, 'get_sertifika', lambda: 0)(),
+                0, 0, 0  # Hasta sütunları için boş değerler
+            ])
 
         for hasta in hastalar:
-            data.append(
-                [hasta.get_hasta_no(), hasta.get_ad(), hasta.get_soyad(), 0, 0, 0, 0, 0, hasta.get_dogum_tarihi(),
-                 hasta.get_hastalik(), hasta.get_tedavi()])
+            data.append([
+                hasta.get_hasta_no(),
+                hasta.get_ad(),
+                hasta.get_soyad(),
+                0, 0, 0, 0, 0, 0, 0,
+                hasta.get_dogum_tarihi(),
+                hasta.get_hastalik(),
+                hasta.get_tedavi()
+            ])
 
-        df = pd.DataFrame(data,
-                          columns=["No", "Ad", "Soyad", "Departman", "Maas", "Uzmanlik", "Deneyim Yili", "Hastane",
-                                   "Calisma Saati", "Sertifika", "Dogum Tarihi", "Hastalik", "Tedavi"])
+        df = pd.DataFrame(data, columns=[
+            "No", "Ad", "Soyad", "Departman", "Maas", "Uzmanlik", "Deneyim Yili", "Hastane",
+            "Calisma Saati", "Sertifika", "Dogum Tarihi", "Hastalik", "Tedavi"
+        ])
 
         df.fillna(0, inplace=True)
+
+        # Maaşı 7000 TL üzerinde olan personeller
+        print("\nMaaşı 7000 TL üzerinde olan personeller:")
+        print(df[df['Maas'] > 7000])
+
         # Uzmanlık alanlarına göre doktor sayıları
         print("\nUzmanlık alanlarına göre doktor sayıları:")
         print(df[df['Uzmanlik'] != 0].groupby('Uzmanlik').size())
@@ -109,10 +130,6 @@ def main():
         # Hasta adına göre alfabetik sıralama
         print("\nHasta adına göre alfabetik sıralama:")
         print(df.sort_values(by='Ad'))
-
-        # Maaşı 7000 TL üzerinde olan personeller
-        print("\nMaaşı 7000 TL üzerinde olan personeller:")
-        print(df[df['Maas'] > 7000])
 
         # 1990 ve sonrası doğumlu hastalar
         print("\n1990 ve sonrası doğumlu hastalar:")
@@ -128,4 +145,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
