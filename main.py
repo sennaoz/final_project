@@ -98,3 +98,33 @@ def main():
                                    "Calisma Saati", "Sertifika", "Dogum Tarihi", "Hastalik", "Tedavi"])
 
         df.fillna(0, inplace=True)
+        # Uzmanlık alanlarına göre doktor sayıları
+        print("\nUzmanlık alanlarına göre doktor sayıları:")
+        print(df[df['Uzmanlik'] != 0].groupby('Uzmanlik').size())
+
+        # 5 yıldan fazla deneyime sahip doktorların toplam sayısı
+        print("\n5 yıldan fazla deneyime sahip doktorların toplam sayısı:")
+        print(df[(df['Deneyim Yili'] > 5)].shape[0])
+
+        # Hasta adına göre alfabetik sıralama
+        print("\nHasta adına göre alfabetik sıralama:")
+        print(df.sort_values(by='Ad'))
+
+        # Maaşı 7000 TL üzerinde olan personeller
+        print("\nMaaşı 7000 TL üzerinde olan personeller:")
+        print(df[df['Maas'] > 7000])
+
+        # 1990 ve sonrası doğumlu hastalar
+        print("\n1990 ve sonrası doğumlu hastalar:")
+        print(df[pd.to_datetime(df['Dogum Tarihi'], errors='coerce') >= pd.Timestamp('1990-01-01')])
+
+        # Yeni DataFrame oluşturma
+        yeni_df = df[["Ad", "Soyad", "Departman", "Maas", "Uzmanlik", "Deneyim Yili", "Hastalik", "Tedavi"]]
+        print("\nYeni DataFrame:")
+        print(yeni_df)
+    except Exception as e:
+        print(f"Bir hata oluştu: {e}")
+
+
+if __name__ == "__main__":
+    main()
