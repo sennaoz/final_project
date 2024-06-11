@@ -27,3 +27,13 @@ def hemsire_bilgileri_iste():
     sertifika = input("Sertifika: ")
     hastane = input("Hastane: ")
     return personel_no, ad, soyad, departman, maas, calisma_saati, sertifika, hastane
+
+def hasta_bilgileri_iste():
+    print("Hasta Bilgilerini Gir")
+    hasta_no = input("Hasta No: ")
+    ad = input("Ad: ")
+    soyad = input("Soyad: ")
+    dogum_tarihi = input("Doğum Tarihi (YYYY-AA-GG): ")
+    hastalik = input("Hastalık: ")
+    tedavi = input("Tedavi: ")
+    return hasta_no, ad, soyad, dogum_tarihi, hastalik, tedavi
