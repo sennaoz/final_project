@@ -19,3 +19,11 @@ def doktor_bilgileri_iste():
     deneyim_yili = int(input("Deneyim Yılı: "))
     hastane = input("Hastane: ")
     return personel_no, ad, soyad, departman, maas, uzmanlik, deneyim_yili, hastane
+
+def hemsire_bilgileri_iste():
+    print("Hemşire Bilgilerini Gir")
+    personel_no, ad, soyad, departman, maas = personel_bilgileri_iste()
+    calisma_saati = int(input("Çalışma Saati: "))
+    sertifika = input("Sertifika: ")
+    hastane = input("Hastane: ")
+    return personel_no, ad, soyad, departman, maas, calisma_saati, sertifika, hastane
