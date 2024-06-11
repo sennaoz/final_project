@@ -76,3 +76,25 @@ def main():
         print("\nHasta Bilgileri:")
         for hasta in hastalar:
             print(hasta)
+        
+        # Pandas DataFrame oluşturma
+        data = []
+        for personel in personeller:
+            data.append([personel.get_personel_no(), personel.get_ad(), personel.get_soyad(), personel.get_departman(),
+                         personel.get_maas(),
+                         getattr(personel, 'get_uzmanlik', lambda: 0)(),
+                         getattr(personel, 'get_deneyim_yili', lambda: 0)(),
+                         getattr(personel, 'get_hastane', lambda: 0)(),
+                         getattr(personel, 'get_calisma_saati', lambda: 0)(),
+                         getattr(personel, 'get_sertifika', lambda: 0)()])
+
+        for hasta in hastalar:
+            data.append(
+                [hasta.get_hasta_no(), hasta.get_ad(), hasta.get_soyad(), 0, 0, 0, 0, 0, hasta.get_dogum_tarihi(),
+                 hasta.get_hastalik(), hasta.get_tedavi()])
+
+        df = pd.DataFrame(data,
+                          columns=["No", "Ad", "Soyad", "Departman", "Maas", "Uzmanlik", "Deneyim Yili", "Hastane",
+                                   "Calisma Saati", "Sertifika", "Dogum Tarihi", "Hastalik", "Tedavi"])
+
+        df.fillna(0, inplace=True)
